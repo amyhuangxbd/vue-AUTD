@@ -1,4 +1,4 @@
-# gold
+# AuTD
 
 > A Vue.js project
 
