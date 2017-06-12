@@ -45,14 +45,43 @@ $ npm run dev
 ``` bash
 npm install --save vue-router
 ```
-  2. update src/router/index.js
+  2. update src/App.vue
 
 ``` bash
-import Hello from '@/components/Hello'
+<template>
+  <div>
+      <router-view></router-view>
+    </div>
+</template>
+
+<script>
+
+    export default {
+    
+    }
+
+</script>
+
+<style>
+    
+</style>
+
+```
+  3. update src/router/index.js
+
+``` bash
+import App from '../App'
 
 export default [{
   path: '/',
-  component: Hello
+  component: App,
+  children: [{
+    path: '',
+    component: r => require.ensure([], () => r(require('../page/home')), 'home')
+  }, {
+    path: '/item',
+    component: r => require.ensure([], () => r(require('../page/item')), 'item')
+  }]
 }]
 
 ```
@@ -80,5 +109,71 @@ new Vue({
     	<router-view></router-view>
 </div>
 
+```
+### Add vuex
+  1. install vuex
+
+``` bash
+npm install --save vuex
+```
+  2. Add State, Mutations, Actions
+src/store/index.js
+``` bash
+import Vue from 'vue'
+import Vuex from 'vuex'
+import mutations from './mutations'
+import actions from './action'
+
+Vue.use(Vuex)
+
+const state = {
+  itemNum: 1,
+  answerid: {}
+  ...
+}
+
+export default new Vuex.Store({
+  state,
+  actions,
+  mutations
+})
+
+```
+src/store/mutations.js
+``` bash
+const ADD_ITEMNUM = 'ADD_ITEMNUM'
+const GET_DATA = 'GET_DATA'
+
+export default {
+  [GET_DATA] (state, payload) {
+    if (payload.res.httpStatusCode === 200) {
+      state.itemDetail = payload.res.topiclist
+    }
+  },
+
+  [ADD_ITEMNUM] (state, payload) {
+    state.itemNum += payload.num
+  }
+}
+
+```
+src/store/action.js
+``` bash
+export default {
+  addNum ({ commit, state }, id) {
+    commit('REMBER_ANSWER', { id })
+    if (state.itemNum < state.itemDetail.length) {
+      commit('ADD_ITEMNUM', {
+        num: 1
+      })
+    }
+  }
+}
+
+```
+  3. use store.dispatch to emit
+
+``` bash
+store.dispatch('addNum')
 ```
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
