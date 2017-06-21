@@ -4,8 +4,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router'
 import store from './store/'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueResource from 'vue-resource'
+import './config/rem'
+import './css/normalize.css'
 
 Vue.use(VueRouter)
+Vue.use(VueAwesomeSwiper)
+Vue.use(VueResource)
 const router = new VueRouter({
   routes
 })

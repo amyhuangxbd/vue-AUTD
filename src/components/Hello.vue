@@ -44,6 +44,7 @@ export default {
     itemDetail: state => state.itemDetail
   }),
   created () {
+    console.log('debugger;')
     this.$store.dispatch('initializeData')
     this.$store.dispatch('getData')
   }

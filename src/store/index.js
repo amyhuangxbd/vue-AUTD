@@ -40,7 +40,10 @@ const state = {
       'topic_id': 20,
       'answer_name': '答案dddd',
       'is_standard_answer': 1
-    }]
+    }],
+    'id': 0,
+    'img': '/static/img/two.a89815c.jpeg',
+    'imgUrl': 'http://photo.cankaoxiaoxi.com/bd/2017/0620/2133538.shtml'
   }, {
     'topic_id': 21,
     'active_topic_id': 4,
@@ -71,7 +74,10 @@ const state = {
       'topic_id': 21,
       'answer_name': '答案D',
       'is_standard_answer': 0
-    }]
+    }],
+    'id': 1,
+    'img': '/static/img/one.bc91fbb.jpeg',
+    'imgUrl': 'http://news.ifeng.com/a/20170619/51279394_0.shtml?_zbs_baidu_news#p=1'
   }],
   answerid: {}
 }
