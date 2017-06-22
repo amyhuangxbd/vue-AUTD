@@ -6,7 +6,6 @@ import routes from './router'
 import store from './store/'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueResource from 'vue-resource'
-import './config/rem'
 import './css/normalize.css'
 
 Vue.use(VueRouter)

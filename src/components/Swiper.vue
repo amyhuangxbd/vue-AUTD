@@ -20,7 +20,6 @@
 <script>
 import { mapState } from 'vuex'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import '../config/rem'
 export default {
   name: 'carrousel',
   data () {
